@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+    <head>
+        <title>PayRoll</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body
+            {
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                background-image:url("http://3.bp.blogspot.com/-XZauq1eTP-A/VCLUowF7ZVI/AAAAAAAABl8/FWkzpBOcW9s/s1600/plain-wallpaper-blue-703296.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                
+            }
+            h3{
+                color: #0b87b8;
+  
+                 font-size: 2em;
+                font-weight: 300;
+                height:2px;
+ 
+            }
+            .btnsubmit{
+            background-color:white;
+            border:1px solid #00bafa;
+            color:#00bafa;
+            padding:10px 100px;
+            display:block;
+            font-weight:bold;
+            border-radius:5px;
+                }
+        .btnsubmit:hover{
+             background-color: #2ec7fa;
+                border:1px solid #0f81a7;
+             color:white;
+             padding:10px 100px;
+             display:block;
+             font-weight:bold;
+              border-radius:5px;
+                }
+           
+            
+            .form-group {
+                box-sizing: border-box;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            height: 520px;
+            padding: 20px;
+            }
+            
+           .main-form
+            {
+                width:350px;
+                margin: 100px auto;
+                padding-top: 10px;
+                padding-left:50px;
+                padding-bottom: 50px;
+                padding-right: 50px;
+                border: 1px solid rgba(0,0,0,0.1);
+                -webkit-box-shadow:0 1px 2px rgba(0,0,0,0.2);
+                background:rgba(255, 255, 255, 0.9);
+                border-radius: 5px;
+                
+             
+            }
+        </style>
+    </head>
+    <body>
+    
+       <form class="main-form" >
+        <div class="form-group">
+            <h3>Pay Roll</h3>
+            <br><br>
+            <label for="userid">User Id</label>  
+            <br> <br>
+            <input type="text" id="userid" placeholder="1AB45EFG901" required>
+            <br> <br>
+            <label for="Name">Username</label>
+            <br> <br>
+            <input type="text" id="Name" placeholder="Username" required>
+            <br> <br>
+            <label >Designations</label>
+                <select id="desig-sel" required> 
+                <option value="ceo">CEO</option>
+                <option value="hr">HR</option> 
+                <option value="project-developer">Project Developer</option> 
+                <option value="sys-analyst">System Analyst</option> 
+                <option value="prog-analyst">Programmer Analyst</option> 
+            </select><br><br>
+          
+            <label for="no-of-days"  style="padding: 25px;">No of days worked</label>
+            
+                <input type="text" id="no-of-days" class="form-control"  name="Noofdays">
+             <br><br>
+            <label for="desig-sel"></label>
+            <button id="submit"  class="btnsubmit" name="submit1" onclick="testInfo();" >Calculate Salary</button>
+            </div>
+        </form>
+        <script>
+           var pattern = /[1-4]{1}[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{3}/;
+            function testInfo() {
+            var valid_format = pattern.exec(document.getElementById("userid").value);
+            var username = document.getElementById("Name").value;
+            if (!valid_format ) {
+                if(!username){
+                        alert ("Please Check Your Username and Id ERROR!!");
+                     } 
+                     else{
+                        alert ("Invalid UserId!");
+                     }
+            }
+            else
+            {
+                if(!username)
+                {
+                    alert ("Invalid USERNAME!");
+                }
+                else{
+                    var n=document.getElementById("no-of-days").value;
+                    var selectElement =  document.querySelector('#desig-sel').value; 
+                    console.log(n,selectElement);
+                    if(selectElement=="ceo")
+                    {
+                        var sal= n*100000;
+                        window.alert("Salary "+sal);                   
+                    }
+                    else if(selectElement=="hr")
+                    {
+                        var sal= n*40000;
+                        window.alert("Salary "+sal);
+                    }
+                    else if(selectElement=="project-developer")
+                    {
+                        var sal= n*20000;
+                        window.alert("Salary "+sal);
+                    } 
+                    else if(selectElement=="prog-designer")
+                    {
+                        var sal= n*24000;
+                        window.alert("Salary "+sal);
+                    }
+
+                }
+            }
+
+            }
+        </script>
+    </body>
+</html>
